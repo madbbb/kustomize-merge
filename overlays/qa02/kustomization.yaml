@@ -1,0 +1,13 @@
+resources:
+- ../../base
+apiVersion: kustomize.config.k8s.io/v1beta1
+kind: Kustomization
+namespace: qa02-console
+patches:
+- path: console-backend/cronjob-checkout-app-reminder.yaml
+- path: console-backend/cronjob-create-account-reminder.yaml
+images:
+- name: console-backend
+  newTag: e5cf25f
+- name: console-frontend-qa02
+  newTag: e5cf25f

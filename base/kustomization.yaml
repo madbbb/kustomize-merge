@@ -1,0 +1,3 @@
+resources:
+  - console-backend/cronjob-checkout-app-reminder.yaml
+  - console-backend/cronjob-create-account-reminder.yaml

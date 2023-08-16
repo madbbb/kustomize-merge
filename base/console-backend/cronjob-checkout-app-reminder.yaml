@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: checkout-app-reminder
+  namespace: roq
+spec:
+  jobTemplate:
+    metadata:
+      name: checkout-app-reminder
+    spec:
+      template:
+        spec:
+          containers:
+            - command:
+                - node
+                - dist/src/console.js
+                - checkout-app-reminder
+              image: console-backend:latest
+              name: checkout-app-reminder
+          restartPolicy: OnFailure
+  schedule: '40 */1 * * *'

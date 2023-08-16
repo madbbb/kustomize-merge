@@ -1,0 +1,21 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: create-account-reminder
+  namespace: roq
+spec:
+  jobTemplate:
+    metadata:
+      name: create-account-reminder
+    spec:
+      template:
+        spec:
+          containers:
+            - command:
+                - node
+                - dist/src/console.js
+                - create-account-reminder
+              image: console-backend:latest
+              name: create-account-reminder
+          restartPolicy: OnFailure
+  schedule: '30 */1 * * *'
